@@ -47,33 +47,6 @@ public class server
             catch(Exception e){}
         }
     }
-
-    public void receiveAndSendFileToAll(Socket uSocket, int userID)
-    {
-        String workingDir = System.getProperty("user.dir");
-        String FILE_TO_RECEIVED = workingDir+ "/imageReceived.jpg";
-        int FILE_SIZE = 70000;
-        int bytesRead;
-        int current = 0;
-
-        FileOutputStream fos = null;
-        BufferedOutputStream bos = null;
-        byte [] mybytearray  = new byte [FILE_SIZE];
-
-        try {
-            InputStream is = uSocket.getInputStream();
-            fos = new FileOutputStream(FILE_TO_RECEIVED);
-            bos = new BufferedOutputStream(fos);
-            bytesRead = is.read(mybytearray,0,mybytearray.length);
-            current = bytesRead;
-
-            bos.write(mybytearray, 0 , current);
-            bos.close();
-            System.out.println("File " + FILE_TO_RECEIVED+ " downloaded (" + current + " bytes read)");
-            }
-        catch(Exception e){}
-    }
-
 }
 
 
